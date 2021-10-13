@@ -6,15 +6,10 @@
     <section >
     <h1 class="container row justify-content-center">Inscription d'un utilisateur</h1>
         <div class="container justify-content-center col-8">
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm)}}
+            <button type="submit" class="btn">Enregistrer</button>
+            {{ form_end(registrationForm) }}
         </div>
     </section>
 {% endblock %}
