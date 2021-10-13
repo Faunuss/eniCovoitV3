@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs inscrits</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">email</th>
+            <th scope="col">Pseudo</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Rôles</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+
+        <td>{{ user.email }}</td>
+        <td>{{ user.pseudo }}</td>
+
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{% for role in user.roles %}{{ role }}&nbsp;{% endfor %}
+        </td>
+
+
+        </tbody>
+        {% endfor %}
+    </table>
+    <a href="{{ path('app_register') }}" class="btn btn-page-outline">Ajouter un User</a>
+{% endblock %}
