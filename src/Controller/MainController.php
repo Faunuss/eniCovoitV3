@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -11,10 +13,22 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(): Response
+    public function home(Request $request, EntityManagerInterface $em)
     {
-        return $this->render('accueil.html.twig', [
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+        $idUser = null;
+        if($user){
+            $idUser = $user->getId();
+        }else{
+            return $this->redirectToRoute('app_login');
+        }
 
-        ]);
+        $formSearch = $this->createForm('App\Form\ResaSearchFormType');
+        $formSearch->handleRequest($request);
+
+        return $this->render('accueil.html.twig');
     }
 }
