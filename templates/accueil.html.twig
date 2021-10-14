@@ -4,4 +4,25 @@
 {% block body %}
 
 
+    {{ form_start(formSearch) }}
+    <div class="container">
+        <div>
+            {{ form_row(formSearch.agence) }}
+        </div>
+        <div class="row">
+            {{ form_label(formSearch.dateDebut) }}
+            {{ form_widget(formSearch.dateDebut) }}
+        </div>
+        <div class="row">
+            {{ form_label(formSearch.dateFin) }}
+            {{ form_widget(formSearch.dateFin) }}
+        </div>
+        <div>
+            {{ form_row(formSearch.submit) }}
+        </div>
+    </div>
+
+    {{ form_end(formSearch) }}
+
+
 {% endblock %}
