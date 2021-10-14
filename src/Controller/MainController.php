@@ -29,6 +29,6 @@ class MainController extends AbstractController
         //$formSearch = $this->createForm('App\Form\ResaSearchFormType');
       //  $formSearch->handleRequest($request);
 
-        return $this->render('accueil.html.twig');
+        return $this->render('accueil.html.twig', ['formSearch' => $formSearch->createView()]);
     }
 }

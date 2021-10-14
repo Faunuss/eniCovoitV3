@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Agence;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,19 +17,20 @@ class ResaSearchFormType extends AbstractType
     {
         $builder
             ->add('agence', EntityType::class, [
+                'class' => Agence::class,
                 'label' => 'Agence : ',
                 'choice_label' => 'libelle',
                 'required' => 'false'
             ])
 
-            ->add('dateDebut', DateTimeType::class, [
+            ->add('dateDebut', DateType::class, [
                 'label' => 'Entre le :',
                 'mapped' => 'false',
                 'widget'=> 'single_text',
                 'required'=> 'false'
             ])
 
-            ->add('dateFin', DateTimeType::class, [
+            ->add('dateFin', DateType::class, [
                 'label' => 'et le :',
                 'mapped' => 'false',
                 'widget'=> 'single_text',
@@ -35,7 +38,10 @@ class ResaSearchFormType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Rechercher'
+                'label' => 'Rechercher',
+                'attr' => array(
+                    'class' => 'btn btn-secondary'
+                )
             ])
         ;
     }
