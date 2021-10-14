@@ -18,7 +18,7 @@ class ProfilController extends AbstractController
         if ($userApp->getEtat()==false){
             return $this->render('TwigBundle/userInactif.html.twig');
         }
-        return $this->render('profil/index.html.twig', [
+        return $this->render('profil/profil.html.twig', [
             'user' => $user
         ]);
     }

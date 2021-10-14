@@ -2,6 +2,16 @@
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block body %}
-
+    <h1>Accueil</h1>
+    <br>
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenue !</h1>
+        <p class="lead">Voici le site de l'ENI proposant des covoiturages !</p>
+        <hr class="my-4">
+        <p>Participes ou organise des covoiturages, c'est économique et bon pour la planète !</p>
+        <p class="lead">
+            <a class=" btn-page btn" href="{{ path('app_login') }}" role="button" id="btn-page">Connexion</a>
+        </p>
+    </div>
 
 {% endblock %}
