@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+    <h1>Modifies ton profil, {{ app.user.pseudo }}</h1>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm">
+                {{ form_start (formUser) }}
+                <div class="form-group ">
+                    {{ form_row(formUser.pseudo) }}
+                </div>
+                <div class="form-group ">
+                    {{ form_row(formUser.email) }}
+
+                </div>
+                <div class="form-group ">
+                    {{ form_row(formUser.telephone) }}
+                </div>
+                <div class="form-group ">
+                    {{ form_row(formUser.plainPassword) }}
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group ">
+                    {{ form_row(formUser.prenom) }}
+                </div>
+                <div class="form-group ">
+                    {{ form_row(formUser.nom) }}
+
+                </div>
+                <div class="form-group ">
+                    {{ form_row(formUser.new_password) }}
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-page">Enregistrer</button>
+                    <a href="{{ path('user_profil',{id:user.id}) }}" class="btn btn-secondary">Retour</a>
+                </div>
+                {{ form_end (formUser) }}
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

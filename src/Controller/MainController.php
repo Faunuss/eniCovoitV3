@@ -26,8 +26,8 @@ class MainController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $formSearch = $this->createForm('App\Form\ResaSearchFormType');
-        $formSearch->handleRequest($request);
+        //$formSearch = $this->createForm('App\Form\ResaSearchFormType');
+      //  $formSearch->handleRequest($request);
 
         $agence = null;
         $dateDebut = null;
