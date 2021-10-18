@@ -19,32 +19,24 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
-    // /**
-    //  * @return Reservation[] Returns an array of Reservation objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function getReservations($agence, $dateDebut, $dateFin): array{
 
-    /*
-    public function findOneBySomeField($value): ?Reservation
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $req = $this->createQueryBuilder('resa')
+            ->innerJoin('resa.destination', 'destination')
+            ->innerJoin('resa.user', 'conducteur')
+            ->leftJoin('resa.inscriptions', 'inscriptions');
+
+        if(!empty($agence)){
+            $req->andWhere('conducteur.agence = :agence')->setParameter('agence', $agence);
+        }
+
+        if(!empty($dateDebut) && !empty($dateFin)){
+            $req->andWhere('resa.dateHeureDebut BETWEEN :dateDebut AND :dateFin')
+                ->setParameter('dateDebut', $dateDebut)
+                ->setParameter('dateFin', $dateFin);
+        }
+
+        return $req->getQuery()->getResult();
+
     }
-    */
 }

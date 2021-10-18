@@ -29,6 +29,23 @@ class MainController extends AbstractController
         $formSearch = $this->createForm('App\Form\ResaSearchFormType');
         $formSearch->handleRequest($request);
 
-        return $this->render('accueil.html.twig', ['formSearch' => $formSearch->createView()]);
+        $agence = null;
+        $dateDebut = null;
+        $dateFin = null;
+
+        $reservations = $em->getRepository('App:Reservation')->getReservations($agence, $dateDebut, $dateFin);
+
+        if($formSearch->isSubmitted() && $formSearch->isValid()){
+            $agence = $formSearch->get('agence')->getData();
+            $dateDebut = $formSearch->get('dateDebut')->getData();
+            $dateFin = $formSearch->get('dateFin')->getData();
+            if($dateDebut > $dateFin){
+                $this->addFlash('danger', 'Les dates saisies sont invalides!');
+                return $this->redirectToRoute('home');
+            }
+            $reservations = $em->getRepository('App::Reservation')->getReservations($agence, $dateDebut, $dateFin);
+        }
+
+        return $this->render('accueil.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);
     }
 }
