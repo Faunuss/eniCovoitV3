@@ -3,18 +3,22 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container row justify-content-center mb-5"><h1> Détail Profil</h1></div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/eniCovoitv3/src/Controller/ProfilController.php'|file_link(0) }}">src/Controller/ProfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/eniCovoitv3/templates/profil/index.html.twig'|file_link(0) }}">templates/profil/index.html.twig</a></code></li>
-    </ul>
+<div class="container row justify-content-center">
+    <div class=" align-items-center col-6" style="max-width:18rem;">
+    <div class="card-body column justify-content-center">
+        <h5 class="card-title">{{ user.pseudo }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Prénom : {{ user.prenom }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Nom : {{ user.nom }}</h6>
+        <p class="card-text">Téléphone : {{ user.telephone }}</p>
+        <div class="container row justify-content-center">
+            {% if app.user.pseudo==user.pseudo %}
+                <a href="{{ path('user_modifier', { id : user.id }) }}" class="btn btn-page">Modifier</a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
 </div>
 {% endblock %}
