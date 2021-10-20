@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue {{ app.user.pseudo }}{% endblock %}
+{% block title %}{{parent()}} | Gestion Utilisateurs{% endblock %}
 
 {% block body %}
     <h1>Liste des utilisateurs inscrits</h1>

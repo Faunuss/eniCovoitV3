@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}{{parent()}} | Volet Admin{% endblock %}
 
 {% block body %}
-<h1>Page admin</h1>
-    <a href="{{ path('admin_gestionUsers') }}" class="btn btn-page-outline">Gestion des utilisateurs</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('accueil')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Accueil Admin</li>
+        </ol>
+    </nav>
+
+    <h1> Bienvenue dans le volet administration {{ app.user.pseudo }} </h1>
+
+    <div class="list-group">
+        <a href="{{path('admin_gestionUsers') }}" class="list-group-item list-group-item-action ">Gestion des utilisateurs</a>
+        <a href="#" class="list-group-item list-group-item-action ">Gestion des Covoiturage</a>
+        <a href="#" class="list-group-item list-group-item-action">Gestion des Véhicules</a>
+    </div>
 {% endblock %}

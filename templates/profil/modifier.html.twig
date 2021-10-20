@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}{{parent()}} | Modif profil{% endblock %}
 
 {% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('accueil')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('user_profil',{id:user.id}) }}" class="lien">Détails profil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modification profil</li>
+        </ol>
+    </nav>
     <h1>Modifies ton profil, {{ app.user.pseudo }}</h1>
-    <div class="container">
-        <div class="row">
+    <section id="modifier-profil">
 
 
-            <div class="col-sm">
+
+
                 {{ form_start (formUser) }}
                 <div class="form-group ">
                     {{ form_row(formUser.pseudo) }}
@@ -23,8 +30,7 @@
                 <div class="form-group ">
                     {{ form_row(formUser.plainPassword) }}
                 </div>
-            </div>
-            <div class="col-sm">
+
                 <div class="form-group ">
                     {{ form_row(formUser.prenom) }}
                 </div>
@@ -42,9 +48,8 @@
                 </div>
                 {{ form_end (formUser) }}
             </div>
-        </div>
-    </div>
-    </div>
 
+
+    </section>
 
 {% endblock %}

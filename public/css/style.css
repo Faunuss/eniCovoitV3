@@ -1,0 +1,38 @@
+h1
+{
+
+    margin: 2rem;
+    color: #fdfff4;
+}
+
+
+/*       PROFIL       */
+
+#bloc-detail-profil {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-end;
+
+
+}
+#bloc-detail-profil div {
+    margin : 0 .5rem;
+    padding: 0 1rem;
+}
+
+#modifier-profil {
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
