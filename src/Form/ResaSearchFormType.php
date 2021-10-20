@@ -17,31 +17,33 @@ class ResaSearchFormType extends AbstractType
         $builder
             ->add('agence', EntityType::class, [
                 'class' => Agence::class,
-                'label' => 'Agence : ',
+                'label' => 'Agence',
                 'choice_label' => 'libelle',
-                'required' => 'false'
+                'required' => false
             ])
 
             ->add('dateDebut', DateType::class, [
-                'label' => 'Entre le :',
-                'mapped' => 'false',
-                'widget'=> 'single_text',
-                'required'=> 'false'
+                'label' => 'Entre le ',
+                'mapped' => false,
+                'widget' => 'single_text',
+                'required'=> false
             ])
 
             ->add('dateFin', DateType::class, [
-                'label' => 'et le :',
-                'mapped' => 'false',
+                'label' => 'et le ',
+                'mapped' => false,
                 'widget'=> 'single_text',
-                'required'=> 'false'
+                'required'=> false
             ])
 
-            ->add('submit', SubmitType::class, [
+/*            ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher',
                 'attr' => array(
-                    'class' => 'btn btn-secondary'
+                    'class' => 'btn btn-secondary boutonAccueil'
+
                 )
             ])
+*/
         ;
     }
 

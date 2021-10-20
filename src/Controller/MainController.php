@@ -53,7 +53,7 @@ class MainController extends AbstractController
                 $this->addFlash('danger', 'Les dates saisies sont invalides!');
                 return $this->redirectToRoute('home');
             }
-            $reservations = $em->getRepository('App::Reservation')->getReservations($agence, $dateDebut, $dateFin);
+            $reservations = $em->getRepository('App:Reservation')->getReservations($agence, $dateDebut, $dateFin);
         }
 
         return $this->render('accueil.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);

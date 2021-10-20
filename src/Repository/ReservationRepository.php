@@ -24,7 +24,8 @@ class ReservationRepository extends ServiceEntityRepository
         $req = $this->createQueryBuilder('resa')
             ->innerJoin('resa.destination', 'destination')
             ->innerJoin('resa.user', 'conducteur')
-            ->leftJoin('resa.inscriptions', 'inscriptions');
+            ->leftJoin('resa.inscriptions', 'inscriptions')
+            ->addOrderBy('resa.dateHeureDebut', 'DESC');
 
         if(!empty($agence)){
             $req->andWhere('conducteur.agence = :agence')->setParameter('agence', $agence);
