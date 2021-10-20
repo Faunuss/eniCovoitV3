@@ -1,0 +1,8 @@
+#boutonsPageAccueil {
+    display: flex;
+    justify-content: center;
+}
+.boutonAccueil {
+    width: 175px;
+    height: 60px;
+}

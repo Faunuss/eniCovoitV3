@@ -2,41 +2,44 @@
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block body %}
-    <h1>Accueil</h1>
-    <br>
-    <div class="jumbotron">
-        <h1 class="display-4">Bienvenue !</h1>
-        <p class="lead">Voici le site de l'ENI proposant des covoiturages !</p>
-        <hr class="my-4">
-        <p>Participes ou organise des covoiturages, c'est économique et bon pour la planète !</p>
-        <p class="lead">
-            <a class=" btn-page btn" href="{{ path('app_login') }}" role="button" id="btn-page">Connexion</a>
-        </p>
+
+    <div style="text-align: right">
+        {{ date('now')|format_datetime('full', 'none', locale='FR') }}
     </div>
 
-    {{ form_start(formSearch) }}
+    <h1 class="text-center" style="font-family: 'Segoe Print'">Bienvenue sur ENIcovoit'</h1>
+    <h5 class="text-center mb-5" style="font-style: italic; font-family: 'Segoe UI Light'">le site de covoiturages entre collègues!</h5>
+
+    {{ form_start(formSearch, {'method': 'POST'}) }}
     <div class="container">
-        <div>
-            {{ form_row(formSearch.agence) }}
-        </div>
-        <div class="row">
-            {{ form_label(formSearch.dateDebut) }}
-            {{ form_widget(formSearch.dateDebut) }}
-        </div>
-        <div class="row">
-            {{ form_label(formSearch.dateFin) }}
-            {{ form_widget(formSearch.dateFin) }}
-        </div>
-        <div>
-            {{ form_row(formSearch.submit) }}
+        <div class="row mb-3">
+            <div class="col-6">
+                <div class="row mb-3">
+                    {{ form_row(formSearch.agence) }}
+                </div>
+                <div class="row-cols-auto mb-3">
+                    {{ form_label(formSearch.dateDebut) }}
+                    {{ form_widget(formSearch.dateDebut) }}
+                    {{ form_label(formSearch.dateFin) }}
+                    {{ form_widget(formSearch.dateFin) }}
+                </div>
+            </div>
+            <div class="row col-6">
+                <div id="boutonsPageAccueil" class="col-6">
+                    <button type="submit" class="btn btn-secondary boutonAccueil">Rechercher</button>
+                </div>
+                <div id="boutonsPageAccueil" class="col-6">
+                    <button type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
+                </div>
+            </div>
         </div>
     </div>
 
     {{ form_end(formSearch) }}
 
     <div class="container">
-        <table class="table-bordered">
-            <thead>
+        <table class="table table-bordered table-striped">
+            <thead class="bg-dark text-white">
             <tr class="text-center">
                 <th scope="col">Destination</th>
                 <th scope="col">Date et heure du covoiturage</th>
@@ -48,7 +51,7 @@
             {% for resa in reservations %}
                 <tr class="text-center">
                     <td>{{ resa.destination.libelle }}</td>
-                    <td>{{ resa.dateHeureDebut |format_datetime(locale='FR') }}</td>
+                    <td>{{ resa.dateHeureDebut |format_datetime('short', 'short', locale='FR') }}</td>
                     <td>{{ resa.inscriptions | length }}/{{ resa.nbrePlaces }}</td>
                     <td>{{ resa.user.pseudo }}</td>
                 </tr>
