@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} | Volet Admin{% endblock %}
+
+{% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('accueil')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Accueil Admin</li>
+        </ol>
+    </nav>
+
+    <h1 class="text-center">Ajouter un véhicule</h1>
+   <section>
+       {{ form_start(formVehicule) }}
+       <div class="row">
+           {{ form_widget(formVehicule) }}
+
+
+           </div>
+       <button type="submit" name="choix" value="enregistre" class="btn btn-page">Enregistrer</button>
+       {{ form_end(formVehicule) }}
+
+   </section>
+{% endblock %}

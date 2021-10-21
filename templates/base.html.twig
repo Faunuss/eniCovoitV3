@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" >
     <title>{% block title %}EniCovoit {% endblock %}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
@@ -26,9 +26,9 @@
 
                 <ul class="navbar-nav me-auto">
                     {% if app.user %}
-                    <li class="nav-item {% if 'accueil' %}active{% endif %}">
-                        <a class="nav-link active" href="{{path('home') }}">Accueil
-                            <span class="visually-hidden">(current)</span>
+                    <li class="nav-item {% if app.request.get('accueil') == 'accueil' %}active{% endif %}">
+                        <a class="nav-link" href="{{path('accueil') }}">Accueil
+
                         </a>
                     </li>
                     <li class="nav-item">
@@ -37,19 +37,20 @@
                         <li class="nav-item {% if 'user_profil' %}active{% endif %}">
                             <a class="nav-link" href="{{ path('user_profil', {id:app.user.id}) }}">Mon profil</a>
                         </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">A propos</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
                     {% else %}
-                    <li class="nav-item {% if 'app_login' %}active{% endif %}">
+                    <li class="nav-item {% if app.request.get('app_login') %}active{% endif %}">
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     </li>
                     {% endif %}
                     {% if is_granted("ROLE_ADMIN") %}
-                        <li class="nav-item {% if 'app_register' %}active{% endif %}">
+                        <li class="nav-item {% if app.request.get('app_register') %}active{% endif %}">
                             <a class="nav-link" href="{{path('admin_accueil') }}">Volet Admin</a>
                         </li>
                     {% endif %}
+
 
                 </ul>
 
@@ -60,7 +61,8 @@
 
 </header>
 
-{% block body %}{% endblock %}
 
+{% block body %}{% endblock %}
 </body>
+
 </html>

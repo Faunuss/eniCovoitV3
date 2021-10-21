@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,16 @@ class MainController extends AbstractController
      * @Route(path="/", name="")
      * @Route (path="/home", name="home")
      */
-    public function home(Request $request, EntityManagerInterface $em)
+
+    public function home(): Response {
+
+        return $this->render('main/home.html.twig');
+    }
+
+    /**
+     * @Route("/accueil", name="accueil")
+     */
+    public function accueil(Request $request, EntityManagerInterface $em)
     {
         /**
          * @var User $user
