@@ -12,7 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route(path="/", name="")
+     * @Route (path="/home", name="home")
      */
 
     public function home(): Response {
@@ -50,12 +51,14 @@ class MainController extends AbstractController
             $dateDebut = $formSearch->get('dateDebut')->getData();
             $dateFin = $formSearch->get('dateFin')->getData();
             if($dateDebut > $dateFin){
-                $this->addFlash('danger', 'Les dates saisies sont invalides!');
-                return $this->redirectToRoute('home');
+                if(!empty($dateFin)){
+                    $this->addFlash('danger', 'Les dates saisies sont invalides!');
+                    return $this->redirectToRoute('home');
+                }
             }
             $reservations = $em->getRepository('App:Reservation')->getReservations($agence, $dateDebut, $dateFin);
         }
 
-        return $this->render('accueil.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);
+        return $this->render('main\accueil.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);
     }
 }

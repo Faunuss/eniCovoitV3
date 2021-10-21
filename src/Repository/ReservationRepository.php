@@ -23,7 +23,7 @@ class ReservationRepository extends ServiceEntityRepository
 
         $req = $this->createQueryBuilder('resa')
             ->innerJoin('resa.destination', 'destination')
-            ->innerJoin('resa.user', 'conducteur')
+            ->innerJoin('resa.conducteur', 'conducteur')
             ->leftJoin('resa.inscriptions', 'inscriptions')
             ->addOrderBy('resa.dateHeureDebut', 'DESC');
 
@@ -31,10 +31,18 @@ class ReservationRepository extends ServiceEntityRepository
             $req->andWhere('conducteur.agence = :agence')->setParameter('agence', $agence);
         }
 
-        if(!empty($dateDebut) && !empty($dateFin)){
-            $req->andWhere('resa.dateHeureDebut BETWEEN :dateDebut AND :dateFin')
-                ->setParameter('dateDebut', $dateDebut)
-                ->setParameter('dateFin', $dateFin);
+        if(!empty($dateDebut) || !empty($dateFin)){
+            if(empty($dateDebut)){
+                $req->andWhere('resa.dateHeureDebut <= :dateFin')
+                    ->setParameter('dateFin', $dateFin);
+            }elseif(empty($dateFin)){
+                $req->andWhere('resa.dateHeureDebut >= :dateDebut')
+                    ->setParameter('dateDebut', $dateDebut);
+           }else{
+                $req->andWhere('resa.dateHeureDebut BETWEEN :dateDebut AND :dateFin')
+                    ->setParameter('dateDebut', $dateDebut)
+                    ->setParameter('dateFin', $dateFin);
+            }
         }
 
         return $req->getQuery()->getResult();
