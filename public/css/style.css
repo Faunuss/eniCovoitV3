@@ -2,7 +2,25 @@
     display: flex;
     justify-content: center;
 }
+
+#titreSecondaireAccueil {
+    font-style: italic;
+    font-family: 'Segoe UI Light', cursive;
+}
+
+#titreAccueil {
+    font-family: 'Segoe Print',cursive;
+}
 .boutonAccueil {
     width: 175px;
     height: 60px;
+}
+
+.boutonCreationResa {
+
+}
+
+.messageErreur {
+    display: flex;
+    justify-content: start;
 }
