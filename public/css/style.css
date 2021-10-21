@@ -35,11 +35,23 @@ h1
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
 #boutonsPageAccueil {
+
+
     display: flex;
     justify-content: center;
 }
 .boutonAccueil {
     width: 175px;
     height: 60px;
+}
+
+.tablModifUsers {
+
+   display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+
+
 }

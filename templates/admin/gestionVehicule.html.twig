@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} | Gestion Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des Véhicules</h1>
+    <a href="{{ path('admin_ajouterVehicule') }}" class="btn btn-page-outline">Ajouter un véhicule</a>
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Désignation :</th>
+            <th scope="col">Immatriculation :</th>
+            <th scope="col">Agence :</th>
+            <th scope="col">Etat :</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+
+        <td>{{ vehicule.designation }}</td>
+        <td>{{ vehicule.immatriculation }}</td>
+        <td>{{ vehicule.agence.libelle }}</td>
+        <td>{{ vehicule.etat.libelle }}</td>
+
+        </td>
+
+
+        </tbody>
+        {% endfor %}
+    </table>
+            </div>
+
+
+{% endblock %}
