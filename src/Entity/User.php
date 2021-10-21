@@ -260,7 +260,7 @@ class User implements UserInterface
     {
         if (!$this->reservations->contains($reservation)) {
             $this->reservations[] = $reservation;
-            $reservation->setUser($this);
+            $reservation->setConducteur($this);
         }
 
         return $this;
@@ -270,8 +270,8 @@ class User implements UserInterface
     {
         if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($reservation->getUser() === $this) {
-                $reservation->setUser(null);
+            if ($reservation->getConducteur() === $this) {
+                $reservation->setConducteur(null);
             }
         }
 

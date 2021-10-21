@@ -53,7 +53,7 @@ class Reservation
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $conducteur;
 
     /**
      * @ORM\ManyToOne(targetEntity=Destination::class, inversedBy="reservations")
@@ -173,14 +173,14 @@ class Reservation
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getConducteur(): ?User
     {
-        return $this->user;
+        return $this->conducteur;
     }
 
-    public function setUser(?User $user): self
+    public function setConducteur(?User $conducteur): self
     {
-        $this->user = $user;
+        $this->conducteur = $conducteur;
 
         return $this;
     }

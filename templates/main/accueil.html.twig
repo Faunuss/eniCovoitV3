@@ -7,12 +7,12 @@
         {{ date('now')|format_datetime('full', 'none', locale='FR') }}
     </div>
 
-    <h1 class="text-center" style="font-family: 'Segoe Print'">Bienvenue sur ENIcovoit'</h1>
-    <h5 class="text-center mb-5" style="font-style: italic; font-family: 'Segoe UI Light'">le site de covoiturages entre collègues!</h5>
+    <h1 id="titreAccueil" class="text-center">Bienvenue sur ENIcovoit'</h1>
+    <h5 id="titreSecondaireAccueil" class="text-center mb-5">le site de covoiturages entre collègues!</h5>
 
     {{ form_start(formSearch, {'method': 'POST'}) }}
     <div class="container">
-        <div class="row mb-3">
+        <div class="row">
             <div class="col-6">
                 <div class="row mb-3">
                     {{ form_row(formSearch.agence) }}
@@ -31,6 +31,13 @@
                 <div id="boutonsPageAccueil" class="col-6">
                     <button type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
                 </div>
+            </div>
+            <div class="col-4 messageErreur">
+                {% for message in app.flashes('danger') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -53,7 +60,7 @@
                     <td>{{ resa.destination.libelle }}</td>
                     <td>{{ resa.dateHeureDebut |format_datetime('short', 'short', locale='FR') }}</td>
                     <td>{{ resa.inscriptions | length }}/{{ resa.nbrePlaces }}</td>
-                    <td>{{ resa.user.pseudo }}</td>
+                    <td>{{ resa.conducteur.pseudo }}</td>
                 </tr>
             {% endfor %}
             </tbody>

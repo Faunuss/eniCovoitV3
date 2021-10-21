@@ -167,7 +167,7 @@ class DataFixtures extends Fixture
                 ->setEtatResa($etatResa[rand(0, count($etatResa)-1)])
                 ->setNbrePlaces((int)$faker->RandomElement(['2', '5']))
                 ->setMotif($faker->text(255))
-                ->setUser($user[rand(0, count($user)-1)])
+                ->setConducteur($user[rand(0, count($user)-1)])
                 ->setVehicule($vehicule[rand(0, count($vehicule)-1)]);
             if($reservation[$i]->getEtatResa()->getLibelle() == 'Annulée'){
                 $reservation[$i]->setMotifAnnulation($faker->text(255));
