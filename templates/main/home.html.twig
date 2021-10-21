@@ -1,18 +1,72 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{parent()}} | EniCovoit{% endblock %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block body %}
-<h1>Accueil</h1>
-    <br>
-    <div class="jumbotron">
-        <h1 class="display-4">Bienvenue !</h1>
-        <p class="lead">Voici le site de l'ENI proposant des covoiturages !</p>
-        <hr class="my-4">
-        <p>Participes ou organise des covoiturages, c'est économique et bon pour la planète !</p>
-        <p class="lead">
-            <a class=" btn-page btn" href="{{ path('app_login') }}" role="button" id="btn-page">Connexion</a>
-        </p>
+
+    <div style="text-align: right">
+        {{ date('now')|format_datetime('full', 'none', locale='FR') }}
     </div>
+
+    <h1 id="titreAccueil" class="text-center">Bienvenue sur ENIcovoit'</h1>
+    <h5 id="titreSecondaireAccueil" class="text-center mb-5">le site de covoiturages entre collègues!</h5>
+
+    {{ form_start(formSearch, {'method': 'POST'}) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="row mb-3">
+                    {{ form_row(formSearch.agence) }}
+                </div>
+                <div class="row-cols-auto mb-3">
+                    {{ form_label(formSearch.dateDebut) }}
+                    {{ form_widget(formSearch.dateDebut) }}
+                    {{ form_label(formSearch.dateFin) }}
+                    {{ form_widget(formSearch.dateFin) }}
+                </div>
+            </div>
+            <div class="row col-6">
+                <div id="boutonsPageAccueil" class="col-6">
+                    <button type="submit" class="btn btn-secondary boutonAccueil">Rechercher</button>
+                </div>
+                <div id="boutonsPageAccueil" class="col-6">
+                    <button type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
+                </div>
+            </div>
+            <div class="col-4 messageErreur">
+                {% for message in app.flashes('danger') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(formSearch) }}
+
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead class="bg-dark text-white">
+            <tr class="text-center">
+                <th scope="col">Destination</th>
+                <th scope="col">Date et heure du covoiturage</th>
+                <th scope="col">Nombre de places/Places dispo</th>
+                <th scope="col">Conducteur</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for resa in reservations %}
+                <tr class="text-center">
+                    <td>{{ resa.destination.libelle }}</td>
+                    <td>{{ resa.dateHeureDebut |format_datetime('short', 'short', locale='FR') }}</td>
+                    <td>{{ resa.inscriptions | length }}/{{ resa.nbrePlaces }}</td>
+                    <td>{{ resa.conducteur.pseudo }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
 
 {% endblock %}

@@ -12,19 +12,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route(path="/", name="")
-     * @Route (path="/home", name="home")
+     * @Route (path="/", name="")
+     * @Route (path="/accueil", name="accueil")
      */
 
-    public function home(): Response {
+    public function accueil(): Response {
 
-        return $this->render('main/home.html.twig');
+        return $this->render('main/accueil.html.twig');
     }
 
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/home", name="home")
      */
-    public function accueil(Request $request, EntityManagerInterface $em)
+    public function home(Request $request, EntityManagerInterface $em)
     {
         /**
          * @var User $user
@@ -59,6 +59,6 @@ class MainController extends AbstractController
             $reservations = $em->getRepository('App:Reservation')->getReservations($agence, $dateDebut, $dateFin);
         }
 
-        return $this->render('main\accueil.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);
+        return $this->render('main\home.html.twig', ['formSearch' => $formSearch->createView(), 'reservations' => $reservations]);
     }
 }
