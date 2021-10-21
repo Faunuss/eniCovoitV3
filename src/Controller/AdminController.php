@@ -27,7 +27,7 @@ class AdminController extends AbstractController
     {
         //récupération de l'user connecté
         $user = $this->getUser();
-        return $this->render('admin/home.html.twig',[
+        return $this->render('admin/accueil.html.twig',[
             'user'=>$user,
         ]);
     }
