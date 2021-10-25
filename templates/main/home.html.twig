@@ -7,7 +7,7 @@
         {{ date('now')|format_datetime('full', 'none', locale='FR') }}
     </div>
 
-    <h1 id="titreAccueil" class="text-center">Bienvenue sur ENIcovoit'</h1>
+    <h1 id="titreAccueil" class="text-center">Bienvenue {{ app.user.pseudo }} sur ENIcovoit'</h1>
     <h5 id="titreSecondaireAccueil" class="text-center mb-5">le site de covoiturages entre collègues!</h5>
 
     {{ form_start(formSearch, {'method': 'POST'}) }}

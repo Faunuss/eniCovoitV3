@@ -285,8 +285,9 @@ class User implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return (string) $this->email;
     }
+
     /**
      * @see UserInterface
      */

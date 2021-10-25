@@ -10,7 +10,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            Vous êtes connecté en tant que : {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
 
@@ -21,14 +21,13 @@
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+           value="{{ csrf_token('authenticate') }}">
 
 
-        <div class="checkbox mb-3">
-            <input type="checkbox" id="remember_me" name="_remember_me" checked/>
-            <label for="remember_me">Se souvenir de moi</label>
-        </div>
+        <label class="checkbox mb-3">
+            <input type="checkbox"  name="_remember_me" checked/>
+            Se souvenir de moi</label>
+
 
 
     <button class="btn btn-lg btn-primary" type="submit">Se connecter</button>

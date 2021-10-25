@@ -23,10 +23,11 @@ class ProfilType extends AbstractType
                 'required'=>false,
                 'type' => PasswordType::class,
                 "mapped"=>false,
+                'label'=>'Nouveau mot de passe : ',
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
                 'options' => ['attr' => ['class' => 'password-field']],
-                'first_options'  => ['label' => 'Nouveau mot de passe'],
-                'second_options' => ['label' => 'Confirmation'],
+                'first_options'  => ['label'=>'MdP :'],
+                'second_options' => ['label' => 'Confirmation : '],
             ])
             ->add('plainPassword', PasswordType::class,["mapped"=>false, 'label' => 'Mot de passe'])
         ;

@@ -1,33 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} | Détails profil{% endblock %}
+{% block title %}{{ parent() }} | Détails profil{% endblock %}
 
 {% block body %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('accueil')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('accueil') }}" class="lien">Accueil</a></li>
             <li class="breadcrumb-item active" aria-current="page">Détails profil</li>
         </ol>
     </nav>
     <section id="bloc-detail-profil">
-<h1>Détails de votre profil :</h1>
+        <h1>Détails de votre profil :</h1>
 
 
-
-
-
-
-                <h5 class="card-title">{{ user.pseudo }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Prénom : {{ user.prenom }}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">Nom : {{ user.nom }}</h6>
-                <p class="card-text">Téléphone : {{ user.telephone }}</p>
-                <div class="container row justify-content-center">
-                    {% if app.user.pseudo==user.pseudo %}
-                        <a href="{{ path('user_modifier', { id : user.id }) }}" class="btn btn-page">Modifier</a>
-                    {% endif %}
-                </div>
-
-
+        <h5 class="card-title">{{ user.pseudo }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Prénom : {{ user.prenom }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Nom : {{ user.nom }}</h6>
+        <p class="card-text">Téléphone : {{ user.telephone }}</p>
+        <div class="container row justify-content-center">
+            {% if app.user.pseudo==user.pseudo %}
+                <a href="{{ path('user_modifier', { id : user.id }) }}" class="btn btn-page">Modifier</a>
+            {% endif %}
+        </div>
 
 
     </section>

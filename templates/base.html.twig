@@ -26,8 +26,8 @@
 
                 <ul class="navbar-nav me-auto">
                     {% if app.user %}
-                    <li class="nav-item {% if app.request.get('accueil') == 'accueil' %}active{% endif %}">
-                        <a class="nav-link" href="{{path('accueil') }}">Accueil
+                    <li class="nav-item {% if app.request.get('home') == 'home' %}active{% endif %}">
+                        <a class="nav-link" href="{{path('home') }}">Accueil
 
                         </a>
                     </li>

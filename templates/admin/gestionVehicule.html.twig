@@ -3,6 +3,13 @@
 {% block title %}{{parent()}} | Gestion Utilisateurs{% endblock %}
 
 {% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_accueil')}}" class="lien">Accueil Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Gestion des véhicules</li>
+        </ol>
+    </nav>
     <h1>Liste des Véhicules</h1>
     <a href="{{ path('admin_ajouterVehicule') }}" class="btn btn-page-outline">Ajouter un véhicule</a>
 <div class="container">

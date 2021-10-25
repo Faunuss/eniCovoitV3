@@ -1,15 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Register{% endblock %}
+{% block title %}{{ parent() }}Register{% endblock %}
 
 {% block body %}
-    <section >
-    <h1 class="container row justify-content-center">Inscription d'un utilisateur</h1>
-        <div class="container justify-content-center col-8">
-            {{ form_start(registrationForm) }}
-            {{ form_widget(registrationForm)}}
-            <button type="submit" class="btn">Enregistrer</button>
-            {{ form_end(registrationForm) }}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_accueil')}}" class="lien">Accueil Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_gestionUsers')}}" class="lien">Gestion des utilisateurs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajout d'un utilisateur</li>
+        </ol>
+    </nav>
+
+    <section id="inscriptionUser">
+        <h1 class="container row justify-content-center">Inscription d'un utilisateur</h1>
+        {{ form_start(registrationForm) }}
+
+        <div class="col-2">
+            {{ form_label(registrationForm.pseudo) }}
         </div>
+        <div class="col-2">
+            {{ form_widget(registrationForm.pseudo) }}
+        </div>
+
+        <div class="col-2">
+            {{ form_label(registrationForm.email) }}
+        </div>
+        <div class="col-2">
+            {{ form_widget(registrationForm.email) }}
+        </div>
+
+            <div class="col-2">
+            {{ form_label(registrationForm.nom) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(registrationForm.nom) }}
+            </div>
+
+            <div class="col-2">
+                {{ form_label(registrationForm.prenom) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(registrationForm.prenom) }}
+            </div>
+
+            <div class="col-2">
+                {{ form_label(registrationForm.ville) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(registrationForm.ville) }}
+            </div>
+
+            <div class="col-2">
+                {{ form_label(registrationForm.agence) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(registrationForm.agence) }}
+            </div>
+
+            <div class="col-2">
+                {{ form_label(registrationForm.plainPassword) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(registrationForm.plainPassword) }}
+            </div>
+
+        <button type="submit" class="btn">Enregistrer</button>
+        {{ form_end(registrationForm) }}
+
     </section>
+
 {% endblock %}

@@ -30,12 +30,7 @@ h1
 }
 
 
-#container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
+
 #boutonsPageAccueil {
 
 
@@ -63,4 +58,30 @@ h1
 .messageErreur {
     display: flex;
     justify-content: start;
+}
+#inscriptionUser {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.col-2 {
+
+
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+.jumbotron {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
 }

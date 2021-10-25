@@ -5,21 +5,54 @@
 {% block body %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('accueil')}}" class="lien">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Accueil Admin</li>
+            <li class="breadcrumb-item"><a href="{{ path('home')}}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_accueil')}}" class="lien">Accueil Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_gestionVehicule')}}" class="lien">Gestion des véhicules</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajout d'un véhicule</li>
         </ol>
     </nav>
 
     <h1 class="text-center">Ajouter un véhicule</h1>
-   <section>
-       {{ form_start(formVehicule) }}
-       <div class="row">
-           {{ form_widget(formVehicule) }}
+    <section id="inscriptionUser">
+
+        {{ form_start(formVehicule) }}
+
+        <div>
+            {{ form_label(formVehicule.designation) }}
+        </div>
+        <div class="col-2">
+            {{ form_widget(formVehicule.designation) }}
+        </div>
+        <div class="col-2">
+            {{ form_label(formVehicule.immatriculation) }}
+        </div>
+        <div class="col-2">
+            {{ form_widget(formVehicule.immatriculation) }}
+        </div>
+        <div>
+            {{ form_label(formVehicule.dateAchat) }}
+            <div class="col-2">
+                {{ form_widget(formVehicule.dateAchat) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(formVehicule.type) }}
+            </div>
+            <div class="col-2">
+                {{ form_widget(formVehicule.type) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(formVehicule.etat) }}
+                {{ form_widget(formVehicule.etat) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(formVehicule.agence) }}
+                {{ form_widget(formVehicule.agence) }}
+            </div>
 
 
-           </div>
-       <button type="submit" name="choix" value="enregistre" class="btn btn-page">Enregistrer</button>
-       {{ form_end(formVehicule) }}
+        </div>
+        <button type="submit" class="btn">Enregistrer</button>
+        {{ form_end(formVehicule) }}
 
-   </section>
+    </section>
 {% endblock %}
