@@ -119,14 +119,12 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_gestionVehicule');
     }
     /**
-     * @Route("accueil/gestionsUsers/modifEtatVehicule/{id}", name="modifier_etat_vehicule")
+     * @Route("accueil/gestionsVehicule/{id}modifVehicule/", name="modifier_vehicule")
      */
-    public function modifierEtatVehicule(VehiculeRepository $vehiculeRepository, EntityManagerInterface $entityManager): Response
+    public function modifierVehicule(VehiculeRepository $vehiculeRepository, EntityManagerInterface $entityManager): Response
     {
 
 
-
-        $entityManager->flush();
-        return $this->redirectToRoute('admin_gestionVehicule');
     }
+
 }
