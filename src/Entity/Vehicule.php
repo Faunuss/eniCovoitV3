@@ -6,6 +6,7 @@ use App\Repository\VehiculeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculeRepository::class)
@@ -28,6 +29,12 @@ class Vehicule
      * @ORM\Column(type="string", length=10, unique=true)
      */
     private $immatriculation;
+
+    /**
+     * @ORM\Column(type="smallint")
+     * @Assert\Range(min=2, max=8, notInRangeMessage="Le nombre de places doit être compris entre {{ min }}  et {{ max }}")
+     */
+    private $placeVoiture;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -165,6 +172,18 @@ class Vehicule
     public function setAgence(?Agence $agence): self
     {
         $this->agence = $agence;
+
+        return $this;
+    }
+
+    public function getPlaceVoiture(): ?int
+    {
+        return $this->placeVoiture;
+    }
+
+    public function setPlaceVoiture(int $placeVoiture): self
+    {
+        $this->placeVoiture = $placeVoiture;
 
         return $this;
     }

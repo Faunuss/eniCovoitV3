@@ -3,9 +3,7 @@
 
 {% block body %}
 
-    <div style="text-align: right">
-        {{ date('now')|format_datetime('full', 'none', locale='FR') }}
-    </div>
+    {{ parent() }}
 
     <h1 id="titreAccueil" class="text-center">Bienvenue sur ENIcovoit'</h1>
     <h5 id="titreSecondaireAccueil" class="text-center mb-5">le site de covoiturages entre collègues!</h5>
@@ -24,11 +22,11 @@
                     {{ form_widget(formSearch.dateFin) }}
                 </div>
             </div>
-            <div class="row col-6">
-                <div id="boutonsPageAccueil" class="col-6">
+            <div class="col-6 centrage">
+                <div class="col-6 centrage">
                     <button type="submit" class="btn btn-secondary boutonAccueil">Rechercher</button>
                 </div>
-                <div id="boutonsPageAccueil" class="col-6">
+                <div class="col-6 centrage">
                     <button type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
                 </div>
             </div>
@@ -41,7 +39,6 @@
             </div>
         </div>
     </div>
-
     {{ form_end(formSearch) }}
 
     <div class="container">

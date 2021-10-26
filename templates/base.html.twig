@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-
 </head>
 <body>
 <header>
@@ -26,8 +25,8 @@
 
                 <ul class="navbar-nav me-auto">
                     {% if app.user %}
-                    <li class="nav-item {% if app.request.get('accueil') == 'accueil' %}active{% endif %}">
-                        <a class="nav-link" href="{{path('accueil') }}">Accueil
+                    <li class="nav-item {% if app.request.get('home') == 'home' %}active{% endif %}">
+                        <a class="nav-link" href="{{path('home') }}">Accueil
 
                         </a>
                     </li>
@@ -62,7 +61,13 @@
 </header>
 
 
-{% block body %}{% endblock %}
+{% block body %}
+
+    <div style="text-align: right">
+        {{ date('now')|format_datetime('full', 'none', locale='FR') }}
+    </div>
+
+{% endblock %}
 </body>
 
 </html>
