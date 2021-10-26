@@ -1,40 +1,52 @@
-h1
-{
-
+h1 {
     margin: 2rem;
     color: #fdfff4;
 }
 
+.boutonAccueil {
+    width: 175px;
+    height: 60px;
+}
 
-/*       PROFIL       */
+.boutonDefault {
+    width: 200px;
+    height: 100px;
+    font-size: large;
+}
+
+.boutonAjouter{
+    padding: 0 5px;
+}
+
+.boutonLien{
+    text-decoration: none;
+    color: white;
+}
+
+.centrage {
+    display: flex;
+    justify-content: center;
+}
+
+.messageErreur {
+    display: flex;
+    justify-content: start;
+}
+
+.container.centrage{
+    margin-top: 100px;
+}
 
 #bloc-detail-profil {
-
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: flex-end;
-
-
-}
-#bloc-detail-profil div {
-    margin : 0 .5rem;
-    padding: 0 1rem;
 }
 
 #modifier-profil {
-
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
-}
-
-
-
-#boutonsPageAccueil {
-
-
-    display: flex;
     justify-content: center;
 }
 
@@ -46,42 +58,8 @@ h1
 #titreAccueil {
     font-family: 'Segoe Print',cursive;
 }
-.boutonAccueil {
-    width: 175px;
-    height: 60px;
-}
 
-.boutonCreationResa {
-
-}
-
-.messageErreur {
-    display: flex;
-    justify-content: start;
-}
-#inscriptionUser {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-}
-
-.col-2 {
-
-
-    width: auto;
-    margin: 5px;
-    padding: 5px;
-
-}
-
-.jumbotron {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
+#bloc-detail-profil div {
+    margin : 0 .5rem;
+    padding: 0 1rem;
 }

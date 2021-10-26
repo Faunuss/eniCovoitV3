@@ -27,6 +27,7 @@ class ReservationController extends AbstractController
          */
 
         $user = $this->getUser();
+        $agence = $user->getAgence();
 
         $reservation = new Reservation();
         $reservation->setConducteur($user);
@@ -43,7 +44,8 @@ class ReservationController extends AbstractController
 
 
 
-        return $this->render('reservation/newReservation.html.twig', ['formResa' => $formResa->createView()]);
+
+        return $this->render('reservation\newReservation.html.twig', ['formResa' => $formResa->createView(), 'agence' => $agence]);
     }
 
 

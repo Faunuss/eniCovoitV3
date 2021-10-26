@@ -2,7 +2,98 @@
 {% block title %}{{ parent() }} - Nouvelle réservation{% endblock %}
 
 {% block body %}
+    {{ parent() }}
 
-<h3 id="titrePage" class="text-center">Créer une réservation</h3>
+    <h3 id="titrePage" class="text-center">Créer une réservation</h3>
+
+    {{ form_start(formResa) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <p>Agence</p>
+            </div>
+            <div class="col-9">
+                <p>{{ agence.libelle }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form_label(formResa.destination) }}
+                    </div>
+                    <div class="col-3">
+                        {{ form_widget(formResa.destination) }}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-info boutonAjouter">Ajouter</button>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form_label(formResa.nbrePlaces) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_widget(formResa.nbrePlaces) }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form_label(formResa.dateHeureDebut) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_widget(formResa.dateHeureDebut) }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form_label(formResa.motif) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_widget(formResa.motif) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-2">
+                        {{ form_label(formResa.duree) }}
+                    </div>
+                    <div class="col-1">
+                        {{ form_widget(formResa.duree) }}
+                    </div>
+                    <div class="col-2">
+                        <p>jour(s)</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2">
+                        {{ form_label(formResa.vehicule) }}
+                    </div>
+                    <div class="col-8">
+                        {{ form_widget(formResa.vehicule) }}
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-info boutonAjouter">Ajouter</button>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <p>Désignation du véhicule</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container centrage">
+        <div class="col-3 centrage">
+            {{ form_row(formResa.publier) }}
+        </div>
+        <div class="col-3 centrage">
+            {{ form_row(formResa.enregistrer) }}
+        </div>
+        <div class="col-3 centrage">
+            <button type="button" class="btn btn-secondary boutonDefault">Annuler</button>
+        </div>
+    </div>
+    {{ form_end(formResa) }}
 
 {% endblock %}

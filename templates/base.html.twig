@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-
 </head>
 <body>
 <header>
@@ -62,7 +61,13 @@
 </header>
 
 
-{% block body %}{% endblock %}
+{% block body %}
+
+    <div style="text-align: right">
+        {{ date('now')|format_datetime('full', 'none', locale='FR') }}
+    </div>
+
+{% endblock %}
 </body>
 
 </html>
