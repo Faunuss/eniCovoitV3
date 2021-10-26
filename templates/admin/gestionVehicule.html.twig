@@ -21,6 +21,7 @@
             <th scope="col">Immatriculation :</th>
             <th scope="col">Agence :</th>
             <th scope="col">Etat :</th>
+            <th scope="col">Gestion</th>
 
         </tr>
         </thead>
@@ -31,6 +32,11 @@
         <td>{{ vehicule.immatriculation }}</td>
         <td>{{ vehicule.agence.libelle }}</td>
         <td>{{ vehicule.etat.libelle }}</td>
+
+        <td>
+            <a href="{{ path('admin_modifier_etat_vehicule',{id:vehicule.id}) }}" class="btn btn-sm btn-primary">Modifier Etat</a>
+
+
 
         </td>
 

@@ -1,44 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} | Gestion Utilisateurs{% endblock %}
+{% block title %}{{ parent() }} | Gestion Utilisateurs{% endblock %}
 
 {% block body %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('home')}}" class="lien">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_accueil')}}" class="lien">Accueil Admin</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('admin_accueil') }}" class="lien">Accueil
+                    Admin</a></li>
             <li class="breadcrumb-item active" aria-current="page">Gestion des Utilisateurs</li>
         </ol>
     </nav>
     <h1>Liste des utilisateurs inscrits</h1>
     <a href="{{ path('app_register') }}" class="btn btn-page-outline">Ajouter un User</a>
-<div class="container">
+    <div class="container">
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">email</th>
-            <th scope="col">Pseudo</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Rôles</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">email</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Rôles</th>
+                <th scope="col">Gestion</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
 
-        <td>{{ user.email }}</td>
-        <td>{{ user.pseudo }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.pseudo }}</td>
 
-        <td>{{ user.nom }}</td>
-        <td>{{ user.prenom }}</td>
-        <td>{% for role in user.roles %}{{ role }}&nbsp;{% endfor %}
-        </td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{% for role in user.roles %}{{ role }}&nbsp;{% endfor %}
+            </td>
+            <td>
+                <a href="{{ path('admin_modifierRole',{id:user.id}) }}" class="btn btn-sm btn-primary">Modifier Rôle</a>
+                <a href="{{ path('admin_supprimer_user',{id:user.id}) }}" class="btn btn-sm btn-danger">Supprimer</a>
 
+            </td>
 
-        </tbody>
-        {% endfor %}
-    </table>
-            </div>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
 
 {% endblock %}

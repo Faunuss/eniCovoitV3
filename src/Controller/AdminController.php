@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\EtatVehicule;
-use App\Entity\TypeVehicule;
+use App\Entity\User;
 use App\Entity\Vehicule;
 use App\Form\VehiculeType;
 use App\Repository\UserRepository;
 use App\Repository\VehiculeRepository;
+use App\Services\Verification;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminController extends AbstractController
 {
+
+
     /**
      * @Route("accueil/", name="accueil")
      */
@@ -79,5 +82,51 @@ class AdminController extends AbstractController
         ]);
 
     }
+    /**
+     * @Route("accueil/gestionsUsers/modifRoles/{id}", name="modifierRole")
+     */
+    public function modifierRole(User $user,EntityManagerInterface $entityManager): Response
+    {
+        $userRoles = $user->getRoles();
+        //si 2 rôles dans le tableau enlever
+        if (in_array('ROLE_USER',$userRoles)) {
+            $user->setRoles(["ROLE_ADMIN"]);
+        }
+        if (in_array('ROLE_ADMIN',$userRoles)){
+            $user->setRoles(['ROLE_USER']);
+        }
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_gestionUsers');
+    }
+    /**
+     * @Route("accueil/gestionUsers/supprimer/{id}", name="supprimer_user")
+     */
+    public function supprimerUser(User $user,EntityManagerInterface $entityManager): Response
+    {
 
+        $entityManager->remove($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_gestionUsers');
+    }
+    /**
+     * @Route("accueil/gestionVehicule/supprimer/{id}", name="supprimer_vehicule")
+     */
+    public function supprimerVehicule(User $user,EntityManagerInterface $entityManager): Response
+    {
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_gestionVehicule');
+    }
+    /**
+     * @Route("accueil/gestionsUsers/modifEtatVehicule/{id}", name="modifier_etat_vehicule")
+     */
+    public function modifierEtatVehicule(VehiculeRepository $vehiculeRepository, EntityManagerInterface $entityManager): Response
+    {
+
+
+
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_gestionVehicule');
+    }
 }
