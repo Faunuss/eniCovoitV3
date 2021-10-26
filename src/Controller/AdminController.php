@@ -59,7 +59,7 @@ class AdminController extends AbstractController
         ]);
     }
     /**
-     * @Route("accueil/gestionsVehicule/ajouterVehicule", name="ajouterVehicule")
+     * @Route("accueil/gestionVehicule/ajouterVehicule", name="ajouterVehicule")
      */
     public function ajouterVehicule(Request                $request,
                                     EntityManagerInterface $entityManager
@@ -83,7 +83,7 @@ class AdminController extends AbstractController
 
     }
     /**
-     * @Route("accueil/gestionsUsers/modifRoles/{id}", name="modifierRole")
+     * @Route("accueil/gestionUsers/modifRoles/{id}", name="modifierRole")
      */
     public function modifierRole(User $user,EntityManagerInterface $entityManager): Response
     {
@@ -99,7 +99,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_gestionUsers');
     }
     /**
-     * @Route("accueil/gestionUsers/supprimer/{id}", name="supprimer_user")
+     * @Route("accueil/gestionUser/supprimer/{id}", name="supprimer_user")
      */
     public function supprimerUser(User $user,EntityManagerInterface $entityManager): Response
     {
@@ -111,19 +111,38 @@ class AdminController extends AbstractController
     /**
      * @Route("accueil/gestionVehicule/supprimer/{id}", name="supprimer_vehicule")
      */
-    public function supprimerVehicule(User $user,EntityManagerInterface $entityManager): Response
+    public function supprimerVehicule(Vehicule $vehicule,EntityManagerInterface $entityManager): Response
     {
 
-        $entityManager->remove($user);
+        $entityManager->remove($vehicule);
         $entityManager->flush();
         return $this->redirectToRoute('admin_gestionVehicule');
     }
     /**
-     * @Route("accueil/gestionsVehicule/{id}modifVehicule/", name="modifier_vehicule")
+     * @Route("accueil/gestionVehicule/modifVehicule/{id}", name="modifierVehicule")
      */
-    public function modifierVehicule(VehiculeRepository $vehiculeRepository, EntityManagerInterface $entityManager): Response
+    public function modifierVehicule(Vehicule $vehicule,
+                                    Request                $request,
+                                    EntityManagerInterface $entityManager
+    ): Response
     {
 
+
+        $form = $this->createForm(VehiculeType::class, $vehicule);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Le véhicule a bien été modifié.');
+            return $this->redirectToRoute('admin_gestionVehicule');
+
+        }
+
+
+
+
+        return $this->render('admin/modifierVehicule.html.twig',[
+            'formVehicule' => $form->createView()
+        ]);
 
     }
 

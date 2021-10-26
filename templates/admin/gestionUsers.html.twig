@@ -37,9 +37,10 @@
             <td>{% for role in user.roles %}{{ role }}&nbsp;{% endfor %}
             </td>
             <td>
-                <a href="{{ path('admin_modifierRole',{id:user.id}) }}" class="btn btn-sm btn-primary">Modifier Rôle</a>
-                <a href="{{ path('admin_supprimer_user',{id:user.id}) }}" class="btn btn-sm btn-danger">Supprimer</a>
-
+                <select name="optionsAdmins" id="optionsAdmins">
+                <option><a href="{{ path('admin_modifierRole',{id:user.id}) }}" class="btn btn-sm btn-primary">Modifier Rôle</a></option>
+                    <option><a href="{{ path('admin_supprimer_user',{id:user.id}) }}" class="btn btn-sm btn-danger">Supprimer</a></option>
+                </select>
             </td>
 
             </tbody>

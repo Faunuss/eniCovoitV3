@@ -34,9 +34,8 @@
         <td>{{ vehicule.etat.libelle }}</td>
 
         <td>
-            <a href="{{ path('admin_modifier_etat_vehicule',{id:vehicule.id}) }}" class="btn btn-sm btn-primary">Modifier Etat</a>
-
-
+            <a href="{{ path('admin_modifierVehicule',{id:vehicule.id}) }}" class="btn btn-sm btn-primary">Modifier Véhicule</a>
+            <a href="{{ path('admin_supprimer_vehicule',{id:vehicule.id}) }}" class="btn btn-sm btn-primary">supprimer Véhicule</a>
 
         </td>
 

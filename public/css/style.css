@@ -1,6 +1,7 @@
 h1 {
     margin: 2rem;
     color: #fdfff4;
+    justify-content: center;
 }
 
 .boutonAccueil {
@@ -62,4 +63,31 @@ h1 {
 #bloc-detail-profil div {
     margin : 0 .5rem;
     padding: 0 1rem;
+}
+
+#inscriptionUser {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+
+}
+
+.col-2 {
+
+
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+.jumbotron {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
 }
