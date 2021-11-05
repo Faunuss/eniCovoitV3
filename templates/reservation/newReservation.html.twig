@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} - Nouvelle réservation{% endblock %}
 
+{% block javascript %}
+    <script type="text/javascript" src={{ asset('js/newReservation.js') }}></script>
+{% endblock %}
+
+{% block modal %}
+    {% include 'reservation/AjoutVehiculeModal.html.twig' %}
+{% endblock %}
+
 {% block body %}
     {{ parent() }}
 
@@ -31,18 +39,18 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        {{ form_label(formResa.nbrePlaces) }}
-                    </div>
-                    <div class="col-4">
-                        {{ form_widget(formResa.nbrePlaces) }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-6">
                         {{ form_label(formResa.dateHeureDebut) }}
                     </div>
                     <div class="col-4">
                         {{ form_widget(formResa.dateHeureDebut) }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form_label(formResa.dateHeureFin) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_widget(formResa.dateHeureFin) }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -55,26 +63,23 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="row">
-                    <div class="col-2">
-                        {{ form_label(formResa.duree) }}
+                <div class="row mb-3">
+                    <div class="col-3">
+                        {{ form_label(formResa.nbrePlaces) }}
                     </div>
                     <div class="col-1">
-                        {{ form_widget(formResa.duree) }}
-                    </div>
-                    <div class="col-2">
-                        <p>jour(s)</p>
+                        {{ form_widget(formResa.nbrePlaces) }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-2">
+                    <div class="col-3">
                         {{ form_label(formResa.vehicule) }}
                     </div>
-                    <div class="col-8">
+                    <div class="col-6">
                         {{ form_widget(formResa.vehicule) }}
                     </div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-info boutonAjouter">Ajouter</button>
+                        <button type="button" class="btn btn-info boutonAjouter" data-bs-toggle="modal" data-bs-target="#ajoutVehiculeModal">Ajouter</button>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -85,13 +90,13 @@
     </div>
     <div class="container centrage">
         <div class="col-3 centrage">
-            {{ form_row(formResa.publier) }}
+            {{ form_widget(formResa.publier) }}
         </div>
         <div class="col-3 centrage">
-            {{ form_row(formResa.enregistrer) }}
+            {{ form_widget(formResa.enregistrer) }}
         </div>
         <div class="col-3 centrage">
-            <button type="button" class="btn btn-secondary boutonDefault">Annuler</button>
+            <button id="boutonAnnuler" type="button" class="btn btn-secondary boutonDefault">Annuler</button>
         </div>
     </div>
     {{ form_end(formResa) }}

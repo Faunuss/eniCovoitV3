@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
+{% block javascript %}
+    <script type="text/javascript" src={{ asset('js/home.js') }}></script>
+{% endblock %}
+
 {% block body %}
 
     {{ parent() }}
@@ -24,10 +28,10 @@
             </div>
             <div class="col-6 centrage">
                 <div class="col-6 centrage">
-                    <button type="submit" class="btn btn-secondary boutonAccueil">Rechercher</button>
+                    {{ form_widget(formSearch.submit) }}
                 </div>
                 <div class="col-6 centrage">
-                    <button type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
+                    <button id="boutonCreerReservation" type="button" class="btn btn-secondary boutonAccueil">Créer une réservation</button>
                 </div>
             </div>
             <div class="col-4 messageErreur">

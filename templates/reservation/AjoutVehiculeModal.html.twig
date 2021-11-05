@@ -1,0 +1,52 @@
+<div class="modal fade" id="ajoutVehiculeModal" aria-labelledby="ajoutVehiculeModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Ajouter un véhicule</h5>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            {{ form_start(formAjoutVehicule) }}
+            <div class="modal-body centrage ">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            {{ form_label(formAjoutVehicule.designation) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_widget(formAjoutVehicule.designation) }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            {{ form_label(formAjoutVehicule.placeVoiture) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_widget(formAjoutVehicule.placeVoiture) }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            {{ form_label(formAjoutVehicule.immatriculation) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_widget(formAjoutVehicule.immatriculation) }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            {{ form_label(formAjoutVehicule.dateAchat) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_widget(formAjoutVehicule.dateAchat) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {{ form_widget(formAjoutVehicule.ajouter) }}
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
+            </div>
+            {{ form_end(formAjoutVehicule) }}
+        </div>
+    </div>
+</div>

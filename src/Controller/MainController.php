@@ -22,7 +22,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/home", name="home")
+     * @Route(path="/home", name="home")
      */
     public function home(Request $request, EntityManagerInterface $em)
     {

@@ -30,15 +30,10 @@ class ResaCreateFormType extends AbstractType
                 'widget' => 'single_text'
             ])
 
-            ->add('duree', ChoiceType::class, [
-                'label' => 'Durée ',
-                'choices'=> [
-                    '1' => 1,
-                    '2' => 2,
-                    '3' => 3,
-                    '4' => 4,
-                    '5' => 5
-                ]
+            ->add('dateHeureFin', DateTimeType::class, [
+                'label' => 'Date et heure de rendu du véhicule',
+                'widget' => 'single_text',
+                'mapped' => false
             ])
 
             ->add('nbrePlaces', ChoiceType::class, [

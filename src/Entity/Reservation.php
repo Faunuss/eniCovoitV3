@@ -25,7 +25,7 @@ class Reservation
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="string")
      */
     private $duree;
 
@@ -95,12 +95,12 @@ class Reservation
         return $this;
     }
 
-    public function getDuree(): ?int
+    public function getDuree(): ?string
     {
         return $this->duree;
     }
 
-    public function setDuree(int $duree): self
+    public function setDuree(string $duree): self
     {
         $this->duree = $duree;
 
@@ -220,4 +220,5 @@ class Reservation
 
         return $this;
     }
+
 }
