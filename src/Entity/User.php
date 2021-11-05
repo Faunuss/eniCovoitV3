@@ -86,6 +86,10 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
      */
     private $reservations;
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $photo;
 
     public function __construct()
     {
@@ -295,6 +299,18 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
     }
 
 }

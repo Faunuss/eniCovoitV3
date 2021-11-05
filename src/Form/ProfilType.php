@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProfilType extends AbstractType
 {
@@ -30,6 +32,18 @@ class ProfilType extends AbstractType
                 'second_options' => ['label' => 'Confirmation : '],
             ])
             ->add('plainPassword', PasswordType::class,["mapped"=>false, 'label' => 'Mot de passe'])
+
+            ->add('photo',FileType::class,[
+                'mapped'=>false,
+                'required'=>false,
+                'label'=>'Ma photo',
+                'constraints'=>[
+                    new File([
+                        'maxSize'=>'5000k',
+                        'mimeTypesMessage'=>'On veux une photo qui fait moins de 5 Mo'
+                    ])
+            ]
+            ])
         ;
     }
 

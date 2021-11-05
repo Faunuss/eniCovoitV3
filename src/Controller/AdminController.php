@@ -11,9 +11,12 @@ use App\Repository\VehiculeRepository;
 use App\Services\Verification;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/admin/", name="admin_")
@@ -123,7 +126,8 @@ class AdminController extends AbstractController
      */
     public function modifierVehicule(Vehicule $vehicule,
                                     Request                $request,
-                                    EntityManagerInterface $entityManager
+                                    EntityManagerInterface $entityManager,
+                                    SluggerInterface $slugger
     ): Response
     {
 
@@ -131,13 +135,31 @@ class AdminController extends AbstractController
         $form = $this->createForm(VehiculeType::class, $vehicule);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            //gestion de la photo
+            /** @var UploadedFile $dossierPhotosVoiture */
+            $dossierPhotosVoiture = $form->get('photo_voiture')->getData();
+            if ($dossierPhotosVoiture) {
+                $nomOriginalDeFichier = pathinfo($dossierPhotosVoiture->getClientOriginalName(), PATHINFO_FILENAME);
+                //on change le nom du fichier
+                $nomDeFichierSecur = $slugger->slug($nomOriginalDeFichier);
+                $nomDeFichier = $nomDeFichierSecur . '-' . uniqid() . '.' . $dossierPhotosVoiture->guessExtension();
+                try {
+                    $dossierPhotosVoiture->move(
+                        $this->getParameter('photo_dossier_voiture'),
+                        $nomDeFichier
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', "Soucis lors de l'enregistrement. Désolé");
+                }
+                $vehicule->setPhoto($nomDeFichier);
+            }
+
             $entityManager->flush();
             $this->addFlash('success', 'Le véhicule a bien été modifié.');
             return $this->redirectToRoute('admin_gestionVehicule');
-
         }
-
-
 
 
         return $this->render('admin/modifierVehicule.html.twig',[

@@ -11,42 +11,51 @@
             <li class="breadcrumb-item active" aria-current="page">Modifier un véhicule</li>
         </ol>
     </nav>
-
-    <h1 class="text-center">Modifier un véhicule</h1>
     <section id="inscriptionUser">
+    <h1 class="text-center">Modifier un véhicule</h1>
+
+
+
 
         {{ form_start(formVehicule) }}
-
         <div>
             {{ form_label(formVehicule.designation) }}
         </div>
-        <div class="col-2">
+        <div class="col-2-details">
             {{ form_widget(formVehicule.designation) }}
         </div>
-        <div class="col-2">
+        <div class="col-2-details">
             {{ form_label(formVehicule.immatriculation) }}
         </div>
-        <div class="col-2">
+        <div class="col-2-details">
             {{ form_widget(formVehicule.immatriculation) }}
         </div>
         <div>
             {{ form_label(formVehicule.dateAchat) }}
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formVehicule.dateAchat) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formVehicule.type) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formVehicule.type) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formVehicule.etat) }}
                 {{ form_widget(formVehicule.etat) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formVehicule.agence) }}
                 {{ form_widget(formVehicule.agence) }}
+            </div>
+            <div class="col-2-details">
+                {{ form_label(formVehicule.photo) }}
+                {{ form_widget(formVehicule.photo) }}
+            </div>
+            <div class="col-2-details">
+                {{ form_label(formVehicule.place_voiture) }}
+                {{ form_widget(formVehicule.place_voiture) }}
             </div>
 
 

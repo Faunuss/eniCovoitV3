@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Détails Véhicule{% endblock %}
+
+{% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" class="lien">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Détails du véhicule</li>
+        </ol>
+    </nav>
+    <section id="bloc-detail-profil">
+        <h1>Détails du véhicule :</h1>
+        <div>
+            {% if vehicule.photo==null %}
+                <img style="width:200px;" src="{{ asset('img/default.png') }}" alt="photo du véhicule">
+            {% else %}
+                <img style="width:200px;" src="{{ asset('uploads/photos_voiture/' ~ vehicule.photo) }}" alt="photo du véhicule">
+            {% endif %}
+        </div>
+        <div class="col-2-details">Désignation : {{ vehicule.designation }}</div>
+        <div class="col-2-details">Immatriculation : {{ vehicule.immatriculation }}</div>
+        <div class="col-2-details">Nombre de places : {{ vehicule.placeVoiture }}</div>
+        <div class="col-2-details">Etat du véhicule : {{ vehicule.etat.libelle }}</div>
+
+
+
+    </section>
+
+{% endblock %}

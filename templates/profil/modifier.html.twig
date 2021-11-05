@@ -13,49 +13,55 @@
     </nav>
     <h1 class="container row justify-content-center">Modifies ton profil, {{ app.user.pseudo }}</h1>
     <section id="modifier-profil">
-
+        <div class="col-2-details">
+            {% if not user.photo %}
+                <img style="width:200px;" src="{{ asset('img/default.png') }}"  alt="photo de profil">
+            {% else %}
+                <img  style="width:200px;" src="{{ asset('uploads/photos/' ~ user.photo) }}"  alt="photo de profil">
+            {% endif %}
+        </div>
 
         {{ form_start (formUser) }}
-            <div>
+            <div class="col-2-details-details">
             {{ form_label(formUser.pseudo) }}
             </div>
-             <div class="col-2">
+             <div class="col-2-details">
             {{ form_widget(formUser.pseudo) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
             {{ form_label(formUser.email) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
             {{ form_widget(formUser.email) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
             {{ form_label(formUser.telephone) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formUser.telephone) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formUser.plainPassword) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formUser.plainPassword) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formUser.prenom) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formUser.prenom) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formUser.nom) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formUser.nom) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_label(formUser.new_password) }}
             </div>
-            <div class="col-2">
+            <div class="col-2-details">
                 {{ form_widget(formUser.new_password) }}
             </div>
 

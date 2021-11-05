@@ -10,8 +10,13 @@
         </ol>
     </nav>
     <section id="bloc-detail-profil">
-        <h1>Détails de votre profil :</h1>
+        <h1>Détails de votre profil {{ app.user.pseudo }} :</h1>
 
+        {% if user.photo==null %}
+            <img style="width:200px;" src="{{ asset('img/default.png') }}"  alt="photo de profil">
+        {% else %}
+            <img  style="width:200px;" src="{{ asset('uploads/photos/' ~ user.photo) }}"  alt="photo de profil">
+        {% endif %}
 
         <h5 class="card-title">{{ user.pseudo }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Prénom : {{ user.prenom }}</h6>

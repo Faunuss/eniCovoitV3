@@ -63,6 +63,10 @@ class Vehicule
      * @ORM\JoinColumn(nullable=true)
      */
     private $agence;
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $photo;
 
     public function __construct()
     {
@@ -184,6 +188,17 @@ class Vehicule
     public function setPlaceVoiture(int $placeVoiture): self
     {
         $this->placeVoiture = $placeVoiture;
+
+        return $this;
+    }
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
